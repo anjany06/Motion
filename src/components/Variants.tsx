@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { stagger } from "motion";
 
 const Variants = () => {
   const [isOpen, setIsOpen] = useState(true);
