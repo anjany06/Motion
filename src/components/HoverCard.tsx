@@ -67,10 +67,7 @@ const Card = () => {
               >
                 <div className="flex gap-2 p-2">
                   <div className="h-7 w-7 flex-shrink-0 bg-gradient-to-br shadow-[0_2px_30px_rgba(0,0,0,0.20)] bg-white rounded-md flex items-center justify-center">
-                    <MessageCircle
-                      onClick={() => setOpen(false)}
-                      className="h-4 w-4 text-neutral-600"
-                    />
+                    <MessageCircle className="h-4 w-4 text-neutral-600" />
                   </div>
                   <div className="flex flex-col">
                     <p className="text-[8px] font-bold text-neutral-600">
