@@ -1,10 +1,12 @@
 import React from "react";
 import Button from "./components/Button";
+import Card from "./components/HoverCard";
 
 const App = () => {
   return (
-    <div>
-      <Button />
+    <div className="h-screen w-full flex items-center justify-center">
+      {/* <Button /> */}
+      <Card />
     </div>
   );
 };
