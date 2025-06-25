@@ -35,6 +35,7 @@ const NavbarLayout = () => {
             {hovered === idx && (
               <motion.div
                 layoutId="hover"
+                //layout id yehi div hr jagahj jayega new entity ni bnegi and iski animate show hogi
                 className="absolute inset-0 bg-black rounded-full"
               />
             )}

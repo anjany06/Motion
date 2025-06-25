@@ -5,16 +5,18 @@ import Variants from "./components/Variants";
 import Hooks from "./components/Hooks";
 import LayoutCard from "./components/LayoutCard";
 import NavbarLayout from "./components/NavbarLayout";
+import AnimatedText from "./components/AnimatedText";
 
 const App = () => {
   return (
-    <div>
+    <div className="min-h-screen bg-black flex items-center justify-center p-10">
       {/* <Button /> */}
       {/* <Card /> */}
       {/* <Variants /> */}
       {/* <Hooks /> */}
       {/* <LayoutCard /> */}
-      <NavbarLayout />
+      {/* <NavbarLayout /> */}
+      <AnimatedText />
     </div>
   );
 };

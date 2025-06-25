@@ -34,6 +34,7 @@ const LayoutCard = () => {
       {current && (
         <motion.div
           layoutId={`card-${current.title}`}
+          // layout id kaa kaam kuch ni bs ek component wohi travel kar raha hai new entity ni bnta and uski ko animate krte hai
           ref={ref}
           className="h-[450px] inset-0 z-20 bg-white m-auto fixed w-72 rounded-2xl border border-neutral-200 p-4 overflow-hidden"
         >
