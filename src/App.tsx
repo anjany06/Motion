@@ -6,6 +6,7 @@ import Hooks from "./components/Hooks";
 import LayoutCard from "./components/LayoutCard";
 import NavbarLayout from "./components/NavbarLayout";
 import AnimatedText from "./components/AnimatedText";
+import AnimationSequences from "./components/AnimationSequences";
 
 const App = () => {
   return (
@@ -16,7 +17,8 @@ const App = () => {
       {/* <Hooks /> */}
       {/* <LayoutCard /> */}
       {/* <NavbarLayout /> */}
-      <AnimatedText />
+      {/* <AnimatedText /> */}
+      <AnimationSequences />
     </div>
   );
 };
