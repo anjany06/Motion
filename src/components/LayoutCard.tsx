@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { div } from "motion/react-client";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -31,11 +32,13 @@ const LayoutCard = () => {
       )}
 
       {current && (
-        <div
+        <motion.div
+          layoutId={`card-${current.title}`}
           ref={ref}
-          className="h-[600px] inset-0 z-20 bg-white m-auto fixed w-72 rounded-2xl border border-neutral-200 p-4"
+          className="h-[450px] inset-0 z-20 bg-white m-auto fixed w-72 rounded-2xl border border-neutral-200 p-4 overflow-hidden"
         >
-          <img
+          <motion.img
+            layoutId={`card-image-${current.title}`}
             src={current.src}
             alt={current.title}
             className="w-full aspect-square rounded-xl"
@@ -44,51 +47,89 @@ const LayoutCard = () => {
           <div className="flex flex-col justify-between items-center">
             <div className="flex items-start justify-between w-full py-4 gap-2">
               <div className="flex flex-col items-start gap-2">
-                <h2 className="font-bold text-sm tracking-tight text-black">
+                <motion.h2
+                  layoutId={`card-title-${current.title}`}
+                  className="font-bold text-sm tracking-tight text-black"
+                >
                   {current.title}
-                </h2>
-                <p className="text-[10px] text-neutral-500">
+                </motion.h2>
+                <motion.p
+                  layoutId={`card-description-${current.title}`}
+                  className="text-[10px] text-neutral-500"
+                >
                   {current.description}
-                </p>
+                </motion.p>
               </div>
-              <a
-                href={current.ctaLink}
-                className="px-3 py-2 bg-green-500 rounded-full text-white text-xs"
-              >
-                {current.ctaText}
-              </a>
+              <motion.div layoutId={`card-cta-${current.title}`}>
+                <a
+                  href={current.ctaLink}
+                  className="px-3 py-2 bg-green-500 rounded-full text-white text-xs"
+                >
+                  {current.ctaText}
+                </a>
+              </motion.div>
             </div>
 
-            <div className="h-60 overflow-auto">{current.content()}</div>
+            <motion.div
+              initial={{
+                filter: "blur(10px)",
+                opacity: 0,
+              }}
+              animate={{
+                filter: "blur(0px)",
+                opacity: 1,
+              }}
+              transition={{ delay: 0.3 }}
+              className="h-52 overflow-auto pb-20"
+              style={{
+                maskImage:
+                  "linear-gradient(to top, transparent 30%, black 80%)",
+                WebkitMaskImage:
+                  "linear-gradient(to top, transparent 30%, black 80%)",
+              }}
+            >
+              {current.content()}
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       )}
       <div className="max-w-lg mx-auto flex flex-col gap-10">
         {cards.map((card, index) => (
-          <button
+          <motion.button
+            layoutId={`card-${card.title}`}
             key={card.title}
             onClick={() => setCurrent(card)}
             className="p-4 rounded-lg cursor-pointer flex justify-between items-center bg-white border border-neutral-200"
           >
             <div className="flex gap-4 items-center">
-              <img
+              <motion.img
+                layoutId={`card-image-${card.title}`}
                 src={card.src}
                 alt={card.title}
-                className="h-15 aspect-square rounded-lg"
+                className="h-16 aspect-square rounded-lg"
               />
               <div className="flex flex-col items-start gap-2">
-                <h2 className="font-bold text-sm tracking-tight text-black">
+                <motion.h2
+                  layoutId={`card-title-${card.title}`}
+                  className="font-bold text-sm tracking-tight text-black"
+                >
                   {card.title}
-                </h2>
-                <p className="text-[10px] text-neutral-500">
+                </motion.h2>
+                <motion.p
+                  layoutId={`card-description-${card.title}`}
+                  className="text-[10px] text-neutral-500"
+                >
                   {card.description}
-                </p>
+                </motion.p>
               </div>
             </div>
-            <div className="px-3 py-2 bg-green-500 rounded-full text-white text-xs">
+            <motion.div
+              layoutId={`card-cta-${card.title}`}
+              className="px-3 py-2 bg-green-500 rounded-full text-white text-xs"
+            >
               {card.ctaText}
-            </div>
-          </button>
+            </motion.div>
+          </motion.button>
         ))}
       </div>
     </div>
@@ -106,7 +147,7 @@ type Card = {
 const cards = [
   {
     description: "Modern web design",
-    title: "Creative Portfolio",
+    title: "Creative Portfolios",
     src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
     ctaText: "play",
     ctaLink: "https://example.com/portfolio",
